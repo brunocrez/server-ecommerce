@@ -5,7 +5,7 @@ import { hashPassword } from '@/utils/hash-password'
 import { GetUserByEmail } from './GetUserByEmail'
 
 export class CreateUserService {
-  async execute({ email, name, password, address, phone }: ICreateUser) {
+  async execute({ email, name, password, phone }: ICreateUser) {
     if (!name || !email || !password) {
       throw new Error('You must provide name, email and password!')
     }
@@ -29,7 +29,6 @@ export class CreateUserService {
         name,
         email,
         password: hashPassowrd,
-        address,
         phone,
       },
     })

@@ -1,1 +1,2 @@
-export * from './ListProductsController'
+export * from './GetProductsController'
+export * from './CreateProductController'

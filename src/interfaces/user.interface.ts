@@ -3,5 +3,4 @@ export interface ICreateUser {
   email: string
   password: string
   phone?: string
-  address?: string
 }
