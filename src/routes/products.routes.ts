@@ -2,6 +2,7 @@ import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
 import {
   CreateProductsController,
   GetProductsController,
+  GetProductController,
 } from '@/controllers/products'
 
 export async function productsRoutes(fastify: FastifyInstance) {
@@ -11,5 +12,9 @@ export async function productsRoutes(fastify: FastifyInstance) {
 
   fastify.get('/products', (req: FastifyRequest, reply: FastifyReply) => {
     return new GetProductsController().handle(req, reply)
+  })
+
+  fastify.get('/products/:id', (req: FastifyRequest, reply: FastifyReply) => {
+    return new GetProductController().handle(req, reply)
   })
 }
