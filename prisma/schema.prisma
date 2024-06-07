@@ -10,18 +10,29 @@ datasource db {
 }
 
 model Product {
-  id          String      @id @default(uuid())
+  id          String         @id @default(uuid())
   name        String
   description String
   price       Float
-  category    String?
-  imageUrl    String
+  category    String
+  slug        String
   Stock       Stock?
   CartItems   CartItem[]
   OrderItems  OrderItem[]
   favorites   Favorite[]
+  images      ProductImage[]
 
   @@map("products")
+}
+
+model ProductImage {
+  id          Int     @id @default(autoincrement())
+  url         String
+  description String?
+  product     Product @relation(fields: [productId], references: [id])
+  productId   String  @map("product_id")
+
+  @@map("product_images")
 }
 
 model User {
@@ -29,7 +40,6 @@ model User {
   name      String
   email     String     @unique
   password  String
-  address   String?
   phone     String?
   Carts     Cart[]
   Orders    Order[]
