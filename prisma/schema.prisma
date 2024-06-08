@@ -13,7 +13,8 @@ model Product {
   id          String         @id @default(uuid())
   name        String
   description String
-  price       Float
+  finalPrice  Float          @map("final_price")
+  fullPrice   Float          @map("full_price")
   category    String
   slug        String
   Stock       Stock?
@@ -26,11 +27,10 @@ model Product {
 }
 
 model ProductImage {
-  id          Int     @id @default(autoincrement())
-  url         String
-  description String?
-  product     Product @relation(fields: [productId], references: [id])
-  productId   String  @map("product_id")
+  id        Int     @id @default(autoincrement())
+  url       String
+  product   Product @relation(fields: [productId], references: [id])
+  productId String  @map("product_id")
 
   @@map("product_images")
 }

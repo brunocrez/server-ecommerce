@@ -1,7 +1,8 @@
 export interface ICreateProduct {
   name: string
   slug: string
-  price: number
+  fullPrice: number
+  finalPrice: number
   category: string
   description: string
 }

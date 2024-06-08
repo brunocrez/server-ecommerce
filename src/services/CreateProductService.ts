@@ -2,8 +2,22 @@ import { prisma } from '@/database/prisma-client'
 import { ICreateProduct } from '@/interfaces/product.interface'
 
 export class CreateProductService {
-  async execute({ name, slug, description, category, price }: ICreateProduct) {
-    if (!name || !slug || !description || !category || !price) {
+  async execute({
+    name,
+    slug,
+    description,
+    category,
+    fullPrice,
+    finalPrice,
+  }: ICreateProduct) {
+    if (
+      !name ||
+      !slug ||
+      !description ||
+      !category ||
+      !fullPrice ||
+      !finalPrice
+    ) {
       throw new Error(
         'You must provide name, slug, description, category and price!',
       )
@@ -15,7 +29,8 @@ export class CreateProductService {
         slug,
         description,
         category,
-        price,
+        finalPrice,
+        fullPrice,
       },
     })
 

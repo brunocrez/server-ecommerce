@@ -14,7 +14,7 @@
     "@fastify/cors": "^9.0.1",
     "@neondatabase/serverless": "^0.9.3",
     "@prisma/adapter-neon": "^5.14.0",
-    "@prisma/client": "^5.14.0",
+    "@prisma/client": "^5.15.0",
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "email-validator": "^2.0.4",
