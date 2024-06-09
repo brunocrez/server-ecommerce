@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
-    "start": "ts-node -r tsconfig-paths/register src/server.ts",
+    "start": "ts-node -r tsconfig-paths/register --project tsconfig.json src/server.ts",
     "vercel-build": "npx prisma migrate deploy"
   },
   "keywords": [],
