@@ -1,3 +1,4 @@
+import 'tsconfig-paths/register'
 import Fastify from 'fastify'
 import cors from '@fastify/cors'
 import { routes } from './routes'
