@@ -1,7 +1,7 @@
-import { prisma } from '../database/prisma-client'
+import { prisma } from '@/database/prisma-client'
 
 export class ListCartService {
-  async execute(userId: number) {
+  async execute(userId: string) {
     return await prisma.cart.findFirst({
       where: { userId },
       select: { id: true },

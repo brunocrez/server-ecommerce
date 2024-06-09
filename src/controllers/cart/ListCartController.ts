@@ -4,15 +4,15 @@ import { ListCartItemsService } from '@/services/ListCartItemsService'
 
 export class ListCartController {
   async handle(request: FastifyRequest, reply: FastifyReply) {
-    const { userId } = request.query as { userId: number }
+    const { userId } = request.query as { userId: string }
     const cartService = new ListCartService()
     const cartItemsService = new ListCartItemsService()
 
-    const cart = await cartService.execute(Number(userId))
+    const cart = await cartService.execute(userId)
 
     if (cart) {
       const { id } = cart
-      const cartItems = await cartItemsService.execute(Number(id))
+      const cartItems = await cartItemsService.execute(id)
       reply.send(cartItems)
     }
 

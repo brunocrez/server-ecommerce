@@ -4,8 +4,7 @@ import { ICreateUser } from '@/interfaces/user.interface'
 
 export class CreateUserController {
   async handle(request: FastifyRequest, reply: FastifyReply) {
-    const { name, email, password, address, phone } =
-      request.body as ICreateUser
+    const { name, email, password, phone } = request.body as ICreateUser
     const userService = new CreateUserService()
 
     try {
@@ -13,7 +12,6 @@ export class CreateUserController {
         name,
         email,
         password,
-        address,
         phone,
       })
       reply.send(user)
