@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "tsc",
+    "build": "tsc && tsc-alias",
     "start": "node -r ts-node/register/transpile-only -r tsconfig-paths/register dist/server.js",
     "vercel-build": "npx prisma migrate deploy"
   },
@@ -32,6 +32,7 @@
     "@types/ws": "^8.5.10",
     "globals": "^15.3.0",
     "prisma": "^5.14.0",
+    "tsc-alias": "^1.8.10",
     "tsx": "^4.11.0",
     "typescript": "^5.4.5"
   }
