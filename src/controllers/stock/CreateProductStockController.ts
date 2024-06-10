@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { CreateProductStockService } from '@/services/CreateProductStockService'
-import { ICreateProductStock } from '@/interfaces/product-stock.interface'
+import { CreateProductStockService } from '../../services/CreateProductStockService'
+import { ICreateProductStock } from '../../interfaces/product-stock.interface'
 
 export class CreateProductStockController {
   async handle(request: FastifyRequest, reply: FastifyReply) {

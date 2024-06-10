@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { GetProductImagesService } from '@/services/GetProductImagesService'
-import { GetProductService } from '@/services/GetProductService'
-import { GetProductStockService } from '@/services/GetProductStockService'
+import { GetProductImagesService } from '../../services/GetProductImagesService'
+import { GetProductService } from '../../services/GetProductService'
+import { GetProductStockService } from '../../services/GetProductStockService'
 
 export class GetProductController {
   async handle(req: FastifyRequest, reply: FastifyReply) {

@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { ListCartService } from '@/services/ListCartService'
-import { ListCartItemsService } from '@/services/ListCartItemsService'
+import { ListCartService } from '../../services/ListCartService'
+import { ListCartItemsService } from '../../services/ListCartItemsService'
 
 export class ListCartController {
   async handle(request: FastifyRequest, reply: FastifyReply) {

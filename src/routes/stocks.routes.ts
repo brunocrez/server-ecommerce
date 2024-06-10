@@ -1,7 +1,7 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
-import { GetProductStockController } from '@/controllers/stock/GetProductStockController'
-import { GetAllProductsStockController } from '@/controllers/stock/GetAllProductsStockController'
-import { CreateProductStockController } from '@/controllers/stock/CreateProductStockController'
+import { GetProductStockController } from '../controllers/stock/GetProductStockController'
+import { GetAllProductsStockController } from '../controllers/stock/GetAllProductsStockController'
+import { CreateProductStockController } from '../controllers/stock/CreateProductStockController'
 
 export async function stocksRoutes(fastify: FastifyInstance) {
   fastify.get(

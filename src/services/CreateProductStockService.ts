@@ -1,5 +1,5 @@
-import { prisma } from '@/database/prisma-client'
-import { ICreateProductStock } from '@/interfaces/product-stock.interface'
+import { prisma } from '../database/prisma-client'
+import { ICreateProductStock } from '../interfaces/product-stock.interface'
 
 export class CreateProductStockService {
   async execute({ productId, quantity }: ICreateProductStock) {

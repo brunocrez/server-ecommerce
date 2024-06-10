@@ -1,7 +1,7 @@
 import { validate } from 'email-validator'
-import { prisma } from '@/database/prisma-client'
-import { ICreateUser } from '@/interfaces/user.interface'
-import { hashPassword } from '@/utils/hash-password'
+import { prisma } from '../database/prisma-client'
+import { ICreateUser } from '../interfaces/user.interface'
+import { hashPassword } from '../utils/hash-password'
 import { GetUserByEmail } from './GetUserByEmail'
 
 export class CreateUserService {

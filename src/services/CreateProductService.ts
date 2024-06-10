@@ -1,5 +1,5 @@
-import { prisma } from '@/database/prisma-client'
-import { ICreateProduct } from '@/interfaces/product.interface'
+import { prisma } from '../database/prisma-client'
+import { ICreateProduct } from '../interfaces/product.interface'
 
 export class CreateProductService {
   async execute({

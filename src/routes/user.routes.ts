@@ -3,7 +3,7 @@ import {
   CreateUserController,
   GetUsersController,
   GetUserController,
-} from '@/controllers/users'
+} from '../controllers/users'
 
 export async function userRoutes(fastify: FastifyInstance) {
   fastify.post('/users', (req: FastifyRequest, reply: FastifyReply) => {

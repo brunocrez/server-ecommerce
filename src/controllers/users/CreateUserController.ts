@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { CreateUserService } from '@/services/CreateUserService'
-import { ICreateUser } from '@/interfaces/user.interface'
+import { CreateUserService } from '../../services/CreateUserService'
+import { ICreateUser } from '../../interfaces/user.interface'
 
 export class CreateUserController {
   async handle(request: FastifyRequest, reply: FastifyReply) {

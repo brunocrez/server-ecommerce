@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { GetProductImagesService } from '@/services/GetProductImagesService'
+import { GetProductImagesService } from '../../services/GetProductImagesService'
 
 export class GetProductImagesController {
   async handle(request: FastifyRequest, reply: FastifyReply) {

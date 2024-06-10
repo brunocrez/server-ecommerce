@@ -3,7 +3,7 @@ import {
   CreateProductsController,
   GetProductsController,
   GetProductController,
-} from '@/controllers/products'
+} from '../controllers/products'
 
 export async function productsRoutes(fastify: FastifyInstance) {
   fastify.post('/products', (req: FastifyRequest, reply: FastifyReply) => {

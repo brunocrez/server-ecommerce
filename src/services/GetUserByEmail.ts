@@ -1,4 +1,4 @@
-import { prisma } from '@/database/prisma-client'
+import { prisma } from '../database/prisma-client'
 
 export class GetUserByEmail {
   async execute(email: string) {

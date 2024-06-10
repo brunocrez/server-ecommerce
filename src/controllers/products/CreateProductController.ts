@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { CreateProductService } from '@/services/CreateProductService'
-import { ICreateProduct } from '@/interfaces/product.interface'
+import { CreateProductService } from '../../services/CreateProductService'
+import { ICreateProduct } from '../../interfaces/product.interface'
 
 export class CreateProductsController {
   async handle(request: FastifyRequest, reply: FastifyReply) {
