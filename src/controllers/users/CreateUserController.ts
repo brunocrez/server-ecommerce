@@ -19,7 +19,7 @@ export class CreateUserController {
           issues: error.issues,
         })
       } else {
-        reply.status(500).send({ message: 'Internal Server Error' })
+        reply.status(422).send(error)
       }
     }
   }

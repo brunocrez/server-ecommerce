@@ -4,6 +4,7 @@ import { userRoutes } from './routes/user.routes'
 import { stocksRoutes } from './routes/stocks.routes'
 import { cartRoutes } from './routes/cart.routes'
 import { productImagesRoutes } from './routes/product-images.routes'
+import { commentsRoutes } from './routes/comments.routes'
 
 export async function routes(fastify: FastifyInstance) {
   fastify.register(userRoutes)
@@ -11,4 +12,5 @@ export async function routes(fastify: FastifyInstance) {
   fastify.register(stocksRoutes)
   fastify.register(cartRoutes)
   fastify.register(productImagesRoutes)
+  fastify.register(commentsRoutes, { prefix: '/comments' })
 }
