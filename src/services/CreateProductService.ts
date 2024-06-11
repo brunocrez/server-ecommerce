@@ -1,38 +1,12 @@
 import { prisma } from '../database/prisma-client'
 import { ICreateProduct } from '../interfaces/product.interface'
+import { createProductSchema } from '../schemas/product.schema'
 
 export class CreateProductService {
-  async execute({
-    name,
-    slug,
-    description,
-    category,
-    fullPrice,
-    finalPrice,
-  }: ICreateProduct) {
-    if (
-      !name ||
-      !slug ||
-      !description ||
-      !category ||
-      !fullPrice ||
-      !finalPrice
-    ) {
-      throw new Error(
-        'You must provide name, slug, description, category and price!',
-      )
-    }
+  async execute(body: ICreateProduct) {
+    const data = createProductSchema.parse(body)
 
-    const product = await prisma.product.create({
-      data: {
-        name,
-        slug,
-        description,
-        category,
-        finalPrice,
-        fullPrice,
-      },
-    })
+    const product = await prisma.product.create({ data })
 
     return product
   }

@@ -1,38 +1,33 @@
-import { validate } from 'email-validator'
+// import { validate } from 'email-validator'
 import { prisma } from '../database/prisma-client'
 import { ICreateUser } from '../interfaces/user.interface'
+import { createUserSchema } from '../schemas/userSchema'
 import { hashPassword } from '../utils/hash-password'
 import { GetUserByEmail } from './GetUserByEmail'
 
 export class CreateUserService {
-  async execute({ email, name, password, phone }: ICreateUser) {
-    if (!name || !email || !password) {
-      throw new Error('You must provide name, email and password!')
-    }
-
-    if (!validate(email)) {
-      throw new Error('You must provide a valid e-mail!')
-    }
+  async execute(body: ICreateUser) {
+    const user = createUserSchema.parse(body)
 
     // verify existing user
     const service = new GetUserByEmail()
-    const verifyUser = await service.execute(email)
+    const verifyUser = await service.execute(user.email)
 
     if (verifyUser) {
       throw new Error('This e-mail address is already in use!')
     }
 
-    const hashPassowrd = await hashPassword(password)
+    const hashPassowrd = await hashPassword(user.password)
 
-    const user = await prisma.user.create({
+    const data = await prisma.user.create({
       data: {
-        name,
-        email,
+        name: user.name,
+        email: user.email,
         password: hashPassowrd,
-        phone,
+        phone: user.phone,
       },
     })
 
-    return user
+    return data
   }
 }
