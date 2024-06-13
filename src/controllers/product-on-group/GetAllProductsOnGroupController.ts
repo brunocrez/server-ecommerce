@@ -4,7 +4,6 @@ import { GetAllProductsOnGroupService } from '../../services/GetAllProductsOnGro
 export class GetAllProductsOnGroupController {
   async handle(_: FastifyRequest, reply: FastifyReply) {
     const service = new GetAllProductsOnGroupService()
-    console.log('chamei')
 
     try {
       const products = await service.execute()

@@ -8,7 +8,7 @@ export async function productsOnGroupRoutes(fastify: FastifyInstance) {
     return new GetProductsOnGroupController().handle(req, reply)
   })
 
-  fastify.get('/', (req: FastifyRequest, reply: FastifyReply) => {
+  fastify.get('/list', (req: FastifyRequest, reply: FastifyReply) => {
     return new GetAllProductsOnGroupController().handle(req, reply)
   })
 
