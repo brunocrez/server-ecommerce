@@ -11,6 +11,6 @@ export async function routes(fastify: FastifyInstance) {
   fastify.register(productsRoutes)
   fastify.register(stocksRoutes)
   fastify.register(cartRoutes)
-  fastify.register(productImagesRoutes)
+  fastify.register(productImagesRoutes, { prefix: '/product-images' })
   fastify.register(commentsRoutes, { prefix: '/comments' })
 }

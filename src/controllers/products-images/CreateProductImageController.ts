@@ -9,7 +9,7 @@ export class CreateProductImageController {
     const service = new CreateProductImageService()
 
     try {
-      const data = service.execute(body)
+      const data = await service.execute(body)
       reply.status(201).send(data)
     } catch (error) {
       if (error instanceof ZodError) {
