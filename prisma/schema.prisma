@@ -10,20 +10,21 @@ datasource db {
 }
 
 model Product {
-  id          String         @id @default(uuid())
-  name        String
-  description String
-  finalPrice  Float          @map("final_price")
-  fullPrice   Float          @map("full_price")
-  category    String
-  slug        String
-  Stock       Stock?
-  CartItems   CartItem[]
-  OrderItems  OrderItem[]
-  favorites   Favorite[]
-  images      ProductImage[]
-  Comment     Comment[]
-  Rating      Rating[]
+  id               String             @id @default(uuid())
+  name             String
+  description      String
+  finalPrice       Float              @map("final_price")
+  fullPrice        Float              @map("full_price")
+  category         String
+  slug             String
+  Stock            Stock?
+  CartItems        CartItem[]
+  OrderItems       OrderItem[]
+  favorites        Favorite[]
+  images           ProductImage[]
+  Comment          Comment[]
+  Rating           Rating[]
+  ProductsOnGroups ProductsOnGroups[]
 
   @@map("products")
 }
@@ -174,4 +175,22 @@ model Rating {
 
   @@unique([userId, productId])
   @@map("ratings")
+}
+
+model ProductGroup {
+  id               Int                @id @default(autoincrement())
+  name             String             @unique
+  ProductsOnGroups ProductsOnGroups[]
+
+  @@map("product_groups")
+}
+
+model ProductsOnGroups {
+  productId String       @map("product_id")
+  groupId   Int          @map("group_id")
+  product   Product      @relation(fields: [productId], references: [id])
+  category  ProductGroup @relation(fields: [groupId], references: [id])
+
+  @@id([productId, groupId])
+  @@map("products_on_groups")
 }
