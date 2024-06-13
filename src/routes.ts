@@ -9,7 +9,7 @@ import { productsOnGroupRoutes } from './routes/products-on-group.route'
 
 export async function routes(fastify: FastifyInstance) {
   fastify.register(userRoutes)
-  fastify.register(productsRoutes)
+  fastify.register(productsRoutes, { prefix: '/products' })
   fastify.register(stocksRoutes)
   fastify.register(cartRoutes)
   fastify.register(productImagesRoutes, { prefix: '/product-images' })

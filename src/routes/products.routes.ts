@@ -6,15 +6,15 @@ import {
 } from '../controllers/products'
 
 export async function productsRoutes(fastify: FastifyInstance) {
-  fastify.post('/products', (req: FastifyRequest, reply: FastifyReply) => {
+  fastify.post('/', (req: FastifyRequest, reply: FastifyReply) => {
     return new CreateProductsController().handle(req, reply)
   })
 
-  fastify.get('/products', (req: FastifyRequest, reply: FastifyReply) => {
+  fastify.get('/', (req: FastifyRequest, reply: FastifyReply) => {
     return new GetProductsController().handle(req, reply)
   })
 
-  fastify.get('/products/:id', (req: FastifyRequest, reply: FastifyReply) => {
+  fastify.get('/:id', (req: FastifyRequest, reply: FastifyReply) => {
     return new GetProductController().handle(req, reply)
   })
 }
