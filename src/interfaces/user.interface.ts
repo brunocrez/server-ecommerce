@@ -4,3 +4,9 @@ export interface ICreateUser {
   password: string
   phone?: string
 }
+
+export interface IUser {
+  name: string
+  email: string
+  userId: string
+}

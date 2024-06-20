@@ -6,6 +6,7 @@ import { cartRoutes } from './routes/cart.routes'
 import { productImagesRoutes } from './routes/product-images.routes'
 import { commentsRoutes } from './routes/comments.routes'
 import { productsOnGroupRoutes } from './routes/products-on-group.route'
+import { orderRoutes } from './routes/order.routes'
 
 export async function routes(fastify: FastifyInstance) {
   fastify.register(userRoutes)
@@ -15,4 +16,5 @@ export async function routes(fastify: FastifyInstance) {
   fastify.register(productImagesRoutes, { prefix: '/product-images' })
   fastify.register(commentsRoutes, { prefix: '/comments' })
   fastify.register(productsOnGroupRoutes, { prefix: '/products-on-group' })
+  fastify.register(orderRoutes, { prefix: '/orders' })
 }
