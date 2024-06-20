@@ -99,6 +99,7 @@ model OrderItem {
   productId String  @map("product_id")
   quantity  Int
   price     Float
+  freight   Float
   Order     Order   @relation(fields: [orderId], references: [id])
   Product   Product @relation(fields: [productId], references: [id])
 
