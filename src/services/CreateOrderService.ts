@@ -24,11 +24,11 @@ export class CreateOrderService {
     }
 
     const order = await prisma.order.create({ data: createOrderData })
-
     const orderItemData = createOrdemItemsData(data, order.id)
+    const products = await prisma.orderItem.createManyAndReturn({
+      data: orderItemData,
+    })
 
-    await prisma.orderItem.createMany({ data: orderItemData })
-
-    return order
+    return { order, products }
   }
 }
