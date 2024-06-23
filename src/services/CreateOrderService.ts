@@ -6,12 +6,25 @@ import { createOrdemItemsData } from '../utils/create-order-items-data'
 import { getOrderValues } from '../utils/get-order-values'
 import { OrderStatus } from '../utils/order-status'
 import { GetMultiProductsByProductIdService } from './GetMultiProductsByProductIdService'
+import { DeleteOrderItemsByOrderIdService } from './order-items/DeleteOrderItemsByOrderIdService'
+import { DeleteOrderByOrderIdService, GetOrderByUserIdService } from './orders'
 
 export class CreateOrderService {
   async execute(body: ICreateOrderRequest) {
     const { user, items } = createOrderSchema.parse(body)
 
     // TODO: verify if userId exists
+
+    // verify if user already has an order with status CREATED
+    const orderService = new GetOrderByUserIdService()
+    const userPreviousOrder = await orderService.execute(user.userId)
+
+    if (userPreviousOrder) {
+      const deleteOrderItemsService = new DeleteOrderItemsByOrderIdService()
+      await deleteOrderItemsService.execute(userPreviousOrder.id)
+      const deleteOrderService = new DeleteOrderByOrderIdService()
+      await deleteOrderService.execute(userPreviousOrder.id)
+    }
 
     // get products by productIds in items
     const productsService = new GetMultiProductsByProductIdService()
