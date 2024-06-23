@@ -3,32 +3,39 @@ import { ICreateOrderRequest } from '../interfaces/order.interface'
 import { createOrderSchema } from '../schemas/order.schema'
 import { createOrder } from '../utils/create-order'
 import { createOrdemItemsData } from '../utils/create-order-items-data'
-import { getTotalValue } from '../utils/get-total-value'
+import { getOrderValues } from '../utils/get-order-values'
 import { OrderStatus } from '../utils/order-status'
+import { GetMultiProductsByProductIdService } from './GetMultiProductsByProductIdService'
 
 export class CreateOrderService {
   async execute(body: ICreateOrderRequest) {
     const { user, items } = createOrderSchema.parse(body)
 
-    // verify if userId exists
-    // get product price by productId
+    // TODO: verify if userId exists
 
-    const data = createOrder(items)
-    const total = getTotalValue(data)
+    // get products by productIds in items
+    const productsService = new GetMultiProductsByProductIdService()
+    const productIds = items.map((item) => item.productId)
+    const products = await productsService.execute(productIds)
+
+    const data = createOrder(products)
+    const { sumFreight, sumPrice, total } = getOrderValues(data)
 
     const createOrderData = {
       userId: user.userId,
       status: OrderStatus.CREATED,
       total,
       createdAt: new Date(),
+      subTotal: sumPrice,
+      totalFreight: sumFreight,
     }
 
     const order = await prisma.order.create({ data: createOrderData })
     const orderItemData = createOrdemItemsData(data, order.id)
-    const products = await prisma.orderItem.createManyAndReturn({
+    const orderItems = await prisma.orderItem.createManyAndReturn({
       data: orderItemData,
     })
 
-    return { order, products }
+    return { order, orderItems }
   }
 }

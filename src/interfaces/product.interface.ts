@@ -6,3 +6,5 @@ export interface ICreateProduct {
   category: string
   description: string
 }
+
+export type ProductType = ICreateProduct & { id: string }
