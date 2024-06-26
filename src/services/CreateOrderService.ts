@@ -31,7 +31,7 @@ export class CreateOrderService {
     const productIds = items.map((item) => item.productId)
     const products = await productsService.execute(productIds)
 
-    const data = createOrder(products)
+    const data = createOrder(products, items)
     const { sumFreight, sumPrice, total } = getOrderValues(data)
 
     const createOrderData = {
@@ -47,6 +47,7 @@ export class CreateOrderService {
     const orderItemData = createOrdemItemsData(data, order.id)
     const orderItems = await prisma.orderItem.createManyAndReturn({
       data: orderItemData,
+      include: { Product: true },
     })
 
     return { order, orderItems }
