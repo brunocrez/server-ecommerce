@@ -1,4 +1,7 @@
-import { deliveryOptions } from '../../utils/delivery-options'
+import {
+  deliveryOptions,
+  freeDeliveryOption,
+} from '../../utils/delivery-options'
 import { GetProductService } from '../GetProductService'
 
 export class GetDeliveryService {
@@ -10,7 +13,7 @@ export class GetDeliveryService {
       if (product.finalPrice > 1999.99) {
         return {
           freeShipping: true,
-          deliveryOptions: [],
+          deliveryOptions: freeDeliveryOption(),
         }
       }
 
