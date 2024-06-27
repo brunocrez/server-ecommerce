@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 const freightSchema = z.object({
   name: z.string().min(1),
-  price: z.number().min(1),
+  price: z.number().min(0),
   deadline: z.number().min(1),
 })
 
