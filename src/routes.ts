@@ -7,6 +7,7 @@ import { commentsRoutes } from './routes/comments.routes'
 import { productsOnGroupRoutes } from './routes/products-on-group.route'
 import { orderRoutes } from './routes/order.routes'
 import { deliveryRoutes } from './routes/delivery.routes'
+import { addressRoutes } from './routes/address.routes'
 
 export async function routes(fastify: FastifyInstance) {
   fastify.register(userRoutes)
@@ -17,4 +18,5 @@ export async function routes(fastify: FastifyInstance) {
   fastify.register(productsOnGroupRoutes, { prefix: '/products-on-group' })
   fastify.register(orderRoutes, { prefix: '/orders' })
   fastify.register(deliveryRoutes, { prefix: '/delivery' })
+  fastify.register(addressRoutes, { prefix: '/address' })
 }
