@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { GetOrderByUserIdService } from '../../services/orders/GetOrderByUserIdService'
+import { GetOrderByUserIdService } from '../../services/orders'
 
 export class GetOrderByUserIdController {
   async handle(req: FastifyRequest, reply: FastifyReply) {

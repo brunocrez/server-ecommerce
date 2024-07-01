@@ -1,10 +1,10 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { GetProductImagesService } from '../../services/GetProductImagesService'
+import { GetProductImagesByProductIdService } from '../../services/product-images'
 
 export class GetProductImagesController {
   async handle(request: FastifyRequest, reply: FastifyReply) {
     const { id } = request.params as { id: string }
-    const service = new GetProductImagesService()
+    const service = new GetProductImagesByProductIdService()
     const images = await service.execute(id)
 
     if (!images) {

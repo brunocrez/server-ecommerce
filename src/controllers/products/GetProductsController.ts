@@ -1,14 +1,16 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { GetProductsService } from '../../services/GetProductsService'
-import { GetProductsByGroupIdService } from '../../services/GetProductsByGroupIdService'
-import { GetMultiProductImagesService } from '../../services/GetMultiProductImagesService'
+import {
+  GetAllProductsService,
+  GetProductsByGroupIdService,
+} from '../../services/product'
+import { GetMultiProductImagesService } from '../../services/product-images'
 import { buildProductsImages } from '../../utils/build-products-images'
 
 export class GetProductsController {
   async handle(req: FastifyRequest, reply: FastifyReply) {
     const { groupId } = req.query as { groupId: string }
     const getProductsByGroupIdService = new GetProductsByGroupIdService()
-    const getAllProductsService = new GetProductsService()
+    const getAllProductsService = new GetAllProductsService()
     const productImagesService = new GetMultiProductImagesService()
 
     try {

@@ -1,6 +1,6 @@
 import { ZodError } from 'zod'
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { CreateUserService } from '../../services/CreateUserService'
+import { CreateUserService } from '../../services/user'
 import { ICreateUser } from '../../interfaces/user.interface'
 
 export class CreateUserController {

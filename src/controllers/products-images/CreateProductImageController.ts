@@ -1,7 +1,7 @@
 import { ZodError } from 'zod'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { ICreateProductImage } from '../../interfaces/product-image.interface'
-import { CreateProductImageService } from '../../services/CreateProductImageService'
+import { CreateProductImageService } from '../../services/product-images'
 
 export class CreateProductImageController {
   async handle(req: FastifyRequest, reply: FastifyReply) {

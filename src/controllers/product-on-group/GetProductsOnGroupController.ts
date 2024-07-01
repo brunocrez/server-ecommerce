@@ -1,6 +1,8 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { GetProductsOnGroupService } from '../../services/GetProductsOnGroupService'
-import { GetAllProductsOnGroupService } from '../../services/GetAllProductsOnGroupService'
+import {
+  GetAllProductsOnGroupService,
+  GetProductsOnGroupService,
+} from '../../services/product-on-group'
 
 export class GetProductsOnGroupController {
   async handle(req: FastifyRequest, reply: FastifyReply) {

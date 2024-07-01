@@ -2,11 +2,11 @@ import {
   deliveryOptions,
   freeDeliveryOption,
 } from '../../utils/delivery-options'
-import { GetProductService } from '../GetProductService'
+import { GetProductByIdService } from '../product'
 
 export class GetDeliveryService {
   async execute(productId: string) {
-    const productService = new GetProductService()
+    const productService = new GetProductByIdService()
     const product = await productService.execute(productId)
 
     if (product) {

@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { ZodError } from 'zod'
-import { CreateCommentService } from '../../services/CreateCommentService'
+import { CreateCommentService } from '../../services/comment'
 import { ICreateComment } from '../../interfaces/comment.interface'
 
 export class CreateCommentController {

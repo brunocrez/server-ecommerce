@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { ZodError } from 'zod'
-import { CreateProductOnGroupService } from '../../services/CreateProductOnGroupService'
+import { CreateProductOnGroupService } from '../../services/product-on-group'
 import { ICreateProductGroup } from '../../interfaces/product-group.interface'
 
 export class CreateProductOnGroupController {

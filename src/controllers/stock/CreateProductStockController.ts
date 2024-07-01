@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { CreateProductStockService } from '../../services/CreateProductStockService'
+import { CreateProductStockService } from '../../services/stock'
 import { ICreateProductStock } from '../../interfaces/product-stock.interface'
 
 export class CreateProductStockController {

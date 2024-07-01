@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { GetDeliveryService } from '../../services/delivery/GetDeliveryService'
+import { GetDeliveryService } from '../../services/delivery'
 
 export class GetDeliveryController {
   async handle(req: FastifyRequest, reply: FastifyReply) {

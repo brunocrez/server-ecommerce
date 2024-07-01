@@ -1,10 +1,10 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { GetProductService } from '../../services/GetProductService'
+import { GetProductByIdService } from '../../services/product'
 
 export class GetProductController {
   async handle(req: FastifyRequest, reply: FastifyReply) {
     const { id } = req.params as { id: string }
-    const productService = new GetProductService()
+    const productService = new GetProductByIdService()
 
     try {
       const product = await productService.execute(id)

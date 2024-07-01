@@ -1,6 +1,6 @@
 import { ZodError } from 'zod'
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { CreateOrderItemsService } from '../../services/CreateOrderItemsService'
+import { CreateOrderItemsService } from '../../services/order-items'
 import { ICreateOrderItem } from '../../interfaces/order-item.interface'
 
 export class CreateOrderItemsController {

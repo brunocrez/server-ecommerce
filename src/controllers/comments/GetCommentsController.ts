@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { GetCommentsService } from '../../services/GetCommentService'
+import { GetCommentsService } from '../../services/comment'
 
 export class GetCommentsController {
   async handle(req: FastifyRequest, reply: FastifyReply) {
