@@ -47,7 +47,7 @@ export class CreateOrderService {
     const orderItemData = createOrdemItemsData(data, order.id)
     const orderItems = await prisma.orderItem.createManyAndReturn({
       data: orderItemData,
-      include: { Product: true },
+      include: { Product: { include: { images: true } } },
     })
 
     return { order, orderItems }
