@@ -8,6 +8,7 @@ import { OrderStatus } from '../../utils/order-status'
 import { GetMultiProductsByProductIdService } from '../product'
 import { DeleteOrderItemsByOrderIdService } from '../order-items'
 import { DeleteOrderByOrderIdService, GetOrderByUserIdService } from '.'
+import { CreateManyOrderItemsService } from '../order-items/CreateManyOrderItemsService'
 
 export class CreateOrderService {
   async execute(body: ICreateOrderRequest) {
@@ -43,12 +44,10 @@ export class CreateOrderService {
       totalFreight: sumFreight,
     }
 
+    const orderItemService = new CreateManyOrderItemsService()
     const order = await prisma.order.create({ data: createOrderData })
     const orderItemData = createOrdemItemsData(data, order.id)
-    const orderItems = await prisma.orderItem.createManyAndReturn({
-      data: orderItemData,
-      include: { Product: { include: { images: true } } },
-    })
+    const orderItems = await orderItemService.execute(orderItemData)
 
     return { order, orderItems }
   }

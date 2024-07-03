@@ -3,7 +3,7 @@ import { OrderItemType } from '../interfaces/order-item.interface'
 export function getOrderValues(items: OrderItemType[]) {
   const result = items.reduce(
     (acc, curr) => {
-      acc.sumPrice += curr.price
+      acc.sumPrice += curr.price * curr.quantity
       acc.sumFreight += curr.freight
       return acc
     },
