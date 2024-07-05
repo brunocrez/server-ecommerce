@@ -21,4 +21,5 @@ const userSchema = z.object({
 export const createOrderSchema = z.object({
   items: z.array(itemSchema),
   user: userSchema,
+  addressId: z.string().uuid(),
 })

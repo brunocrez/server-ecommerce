@@ -13,7 +13,14 @@ export class UpdateOrderService {
     const order = await orderService.execute(userId)
 
     if (order) {
-      const data = { ...order, status }
+      const data = {
+        ...order,
+        status,
+        addressId: undefined,
+        Address: undefined,
+        User: undefined,
+        updatedAt: new Date(),
+      }
 
       const orderResponse = await prisma.order.update({
         where: { id: order.id },
@@ -23,7 +30,12 @@ export class UpdateOrderService {
       const service = new GetOrderItemsByOrderIdService()
       const orderItems = await service.execute(order.id)
 
-      return { order: orderResponse, orderItems }
+      return {
+        order: orderResponse,
+        orderItems,
+        address: order.Address,
+        user: order.User,
+      }
     }
 
     throw new Error(

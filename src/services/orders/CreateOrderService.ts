@@ -12,9 +12,10 @@ import { CreateManyOrderItemsService } from '../order-items/CreateManyOrderItems
 
 export class CreateOrderService {
   async execute(body: ICreateOrderRequest) {
-    const { user, items } = createOrderSchema.parse(body)
+    const { user, items, addressId } = createOrderSchema.parse(body)
 
     // TODO: verify if userId exists
+    // TODO: verify if addressId exists and is related to given userId
 
     // verify if user already has an order with status CREATED
     const orderService = new GetOrderByUserIdService()
@@ -42,6 +43,7 @@ export class CreateOrderService {
       createdAt: new Date(),
       subTotal: sumPrice,
       totalFreight: sumFreight,
+      addressId,
     }
 
     const orderItemService = new CreateManyOrderItemsService()
