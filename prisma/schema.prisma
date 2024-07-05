@@ -89,6 +89,9 @@ model Order {
   subTotal     Float       @map("sub_total")
   totalFreight Float       @map("total_freight")
   createdAt    DateTime    @default(now()) @map("created_at")
+  updatedAt    DateTime    @updatedAt @map("updated_at")
+  addressId    String      @map("address_id")
+  Address      Address     @relation(fields: [addressId], references: [id])
   User         User        @relation(fields: [userId], references: [id])
   Items        OrderItem[]
 
@@ -120,6 +123,7 @@ model Address {
   postalCode   String  @map("postal_code")
   user         User?   @relation(fields: [userId], references: [id])
   userId       String? @map("user_id")
+  Order        Order[]
 
   @@map("address")
 }
