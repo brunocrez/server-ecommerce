@@ -3,12 +3,12 @@ import { randomNumber } from './random-number'
 
 export const deliveryOptions = (price: number) => [
   {
-    name: 'Simple Delivery',
+    name: 'Entrega Simples',
     price: getFreight(price),
     deadline: Math.floor(randomNumber(6, 12)),
   },
   {
-    name: 'Fast Delivery',
+    name: 'Entrega Rápida',
     price: getFreight(price) + randomNumber(6, 9),
     deadline: Math.floor(randomNumber(2, 4)),
   },

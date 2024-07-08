@@ -1,4 +1,5 @@
 import { prisma } from '../../database/prisma-client'
+import { formatCartItems } from '../../utils/format-cart-items'
 import { GetCartItemsByCartIdService } from '../cart-items/GetCartItemsByCartIdService'
 
 export class GetCartByUserIdService {
@@ -11,11 +12,14 @@ export class GetCartByUserIdService {
 
     const itemsService = new GetCartItemsByCartIdService()
     const cartItems = await itemsService.execute(cart.id)
-    const items = cartItems.map((item) => ({
-      ...item,
-      product: { ...item.Product },
-      Product: undefined,
-    }))
-    return { items }
+    const { items, totalItems, totalPrice } = formatCartItems(cartItems)
+
+    return {
+      cartId: cart.id,
+      userId: cart.userId,
+      totalItems,
+      totalPrice,
+      items,
+    }
   }
 }
