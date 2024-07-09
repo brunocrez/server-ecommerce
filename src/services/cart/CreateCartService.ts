@@ -10,14 +10,15 @@ export class CreateCartService {
     const { userId, productId, quantity } = createCartSchema.parse(body)
 
     // verify if user already has a cart
-    const cartService = new GetCartByUserIdService()
-    const userCart = await cartService.execute(userId)
+    const getCartService = new GetCartByUserIdService()
+    const userCart = await getCartService.execute(userId)
     const createCartItem = new CreateCartItemsService()
 
     // user does not have a cart
     if (!userCart) {
       const cart = await prisma.cart.create({ data: { userId } })
-      return await createCartItem.execute(cart.id, productId, quantity)
+      await createCartItem.execute(cart.id, productId, quantity)
+      return await getCartService.execute(userId)
     }
 
     // user does have a cart
@@ -32,6 +33,7 @@ export class CreateCartService {
       return userCart
     }
 
-    return await createCartItem.execute(userCart.cartId, productId, quantity)
+    await createCartItem.execute(userCart.cartId, productId, quantity)
+    return await getCartService.execute(userId)
   }
 }
