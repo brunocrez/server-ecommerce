@@ -9,7 +9,6 @@ export function formatCartItems(cartItems: ICartItem[]) {
 
     return {
       ...item,
-      id: undefined,
       Product: undefined,
       product: { ...item.Product },
     }
