@@ -5,6 +5,7 @@ export class GetCartItemsByCartIdService {
     return await prisma.cartItem.findMany({
       where: { cartId },
       include: { Product: { include: { images: true } } },
+      orderBy: { createdAt: 'desc' },
     })
   }
 }
