@@ -12,13 +12,16 @@ export class GetCartByUserIdService {
 
     const itemsService = new GetCartItemsByCartIdService()
     const cartItems = await itemsService.execute(cart.id)
-    const { items, totalItems, totalPrice } = formatCartItems(cartItems)
+    const { items, totalItems, totalPrice, totalFreight, total } =
+      formatCartItems(cartItems)
 
     return {
       cartId: cart.id,
       userId: cart.userId,
       totalItems,
       totalPrice,
+      totalFreight,
+      total,
       items,
     }
   }
