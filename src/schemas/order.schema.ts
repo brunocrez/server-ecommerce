@@ -1,15 +1,9 @@
 import { z } from 'zod'
 
-const freightSchema = z.object({
-  name: z.string().min(1),
-  price: z.number().min(0),
-  deadline: z.number().min(1),
-})
-
 const itemSchema = z.object({
   productId: z.string().uuid().min(1),
   quantity: z.number().min(1),
-  freight: freightSchema,
+  freight: z.number().min(0),
 })
 
 const userSchema = z.object({

@@ -10,6 +10,7 @@ import { deliveryRoutes } from './routes/delivery.routes'
 import { addressRoutes } from './routes/address.routes'
 import { cartRoutes } from './routes/cart.routes'
 import { cartItemRoutes } from './routes/cart-item.routes'
+import { orderItemRoutes } from './routes/order-item.routes'
 
 export async function routes(fastify: FastifyInstance) {
   fastify.register(userRoutes)
@@ -23,4 +24,5 @@ export async function routes(fastify: FastifyInstance) {
   fastify.register(addressRoutes, { prefix: '/address' })
   fastify.register(cartRoutes, { prefix: '/cart' })
   fastify.register(cartItemRoutes, { prefix: '/cart-item' })
+  fastify.register(orderItemRoutes, { prefix: '/order-item' })
 }

@@ -7,3 +7,8 @@ export const createOrderItemsSchema = z.object({
   price: z.number().min(1),
   freight: z.number().min(1),
 })
+
+export const updateOrderItemsSchema = z.object({
+  quantity: z.number().min(1),
+  id: z.string().uuid(),
+})

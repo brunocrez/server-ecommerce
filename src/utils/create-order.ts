@@ -9,7 +9,7 @@ export function createOrder(
   const map = new Map()
 
   items.forEach((item) => {
-    map.set(item.productId, { ...item, freight: item.freight.price })
+    map.set(item.productId, { ...item, freight: item.freight })
   })
 
   products.forEach((product) => {

@@ -8,7 +8,7 @@ export interface IFreight {
 export interface IProductItem {
   productId: string
   quantity: number
-  freight: IFreight
+  freight: number
 }
 
 export interface ICreateOrderRequest {

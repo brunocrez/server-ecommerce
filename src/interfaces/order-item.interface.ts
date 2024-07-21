@@ -7,3 +7,8 @@ export interface ICreateOrderItem {
 }
 
 export type OrderItemType = Omit<ICreateOrderItem, 'orderId'>
+
+export type UpdateOrderItemRequestType = {
+  quantity: number
+  id: string
+}
